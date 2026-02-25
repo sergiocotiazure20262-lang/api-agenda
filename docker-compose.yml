@@ -1,0 +1,28 @@
+services:
+
+   apiagenda: #Serviço da API
+      build:
+        context: . #Projeto raiz
+        dockerfile: Dockerfile #Arquivo que publica o projeto
+      container_name: api-agenda-springboot #Nome do container
+      restart: always #Iniciar automaticamente
+      ports: #portas para execução
+        - "8083:8083" #Porta externa / Porta interna
+      depends_on:
+        - postgres #Só pode iniciar depois que o banco estiver iniciado
+
+   postgres: #Nome do serviço
+      image: postgres:16 #Imagem ou instalador do postgres
+      container_name: api-agenda-postgres #Nome do container
+      restart: always #sempre iniciar ou reiniciar o container
+      ports:
+        - "5435:5432" #Porta externa / Porta interna
+      environment:
+          POSTGRES_DB: api-agenda-db #Nome do banco de dados
+          POSTGRES_USER: api-agenda-user #Nome do usuário do PostgreSQL
+          POSTGRES_PASSWORD: api-agenda-pass #Senha do usuário do PostgreSQL
+      volumes:
+        - postgres_data_agenda:/var/lib/postgresql/data #Pasta para salvar os arquivos do banco
+
+volumes:
+  postgres_data_agenda:
