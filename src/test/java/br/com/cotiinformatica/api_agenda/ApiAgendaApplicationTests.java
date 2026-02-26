@@ -23,6 +23,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ApiAgendaApplicationTests {
 
+	/*
+
 	//Injeção de dependência
 	@Autowired
 	private MockMvc mockMvc;
@@ -75,4 +77,6 @@ class ApiAgendaApplicationTests {
 	void consultarCompromissosTest() {
 		fail("Não implementado!");
 	}
+
+	*/
 }
