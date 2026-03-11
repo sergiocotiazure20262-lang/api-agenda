@@ -33,6 +33,9 @@ public class Tarefa {
     @Column(name = "prioridade", nullable = false)
     private Prioridade prioridade;
 
+    @Column(name = "usuario_id", nullable = false)
+    private UUID usuarioId;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
