@@ -2,6 +2,7 @@ package br.com.cotiinformatica.api_agenda.controllers;
 
 import br.com.cotiinformatica.api_agenda.dtos.CategoriaRequest;
 import br.com.cotiinformatica.api_agenda.services.CategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +17,12 @@ public class CategoriasController {
     private CategoriaService categoriaService;
 
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody CategoriaRequest request) {
+    public ResponseEntity<?> post(@RequestBody @Valid CategoriaRequest request) {
         return ResponseEntity.ok().body(categoriaService.cadastrar(request));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<?> put(@PathVariable UUID id, @RequestBody CategoriaRequest request) {
+    public ResponseEntity<?> put(@PathVariable UUID id, @RequestBody @Valid CategoriaRequest request) {
         return ResponseEntity.ok().body(categoriaService.atualizar(id, request));
     }
 
